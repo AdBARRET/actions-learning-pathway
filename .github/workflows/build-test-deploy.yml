@@ -1,80 +1,12 @@
 name: hello-world
 on: push
 jobs: 
-  hello-world-job:
+  build:
     runs-on: ubuntu-latest
     steps: 
       - name: Check out repository code
         uses: actions/checkout@v3
       - run: echo "$(cat hello_world.txt)"
-      - name: use node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18.x'
-      - run: npm install
-      - run: npm run build 
-
-Guide 3: Testing applications with GitHub Actions
-Guide 4: Configure your deployment environment in GitHub
-Guide 5: Automating and deploying workflows with GitHub Actions
-Automation essentials module wrap-up
-Intermediate
-Intermediate Automation: Continue your journey
-Guide 1: Provision a runner group in GitHub Actions
-Guide 2: Create reusable workflows in GitHub Actions
-Guide 3: Manage and monitor workflows in GitHub Actions
-Guide 4: Advanced testing automation strategies with GitHub Actions
-Guide 5: Advanced automated deployment protection rules in Actions
-Automation intermediate module wrap-up
-Advanced
-Advanced Automation: Become the expert
-Guide 1: Enterprise workflow automation at scale
-Guide 2: Planning for migration to GitHub Actions
-Guide 3: Securing CI/CD pipelines with secrets and variables
-Guide 4: Advanced workflow configurations in GitHub Actions
-Guide 5: Building your first custom GitHub Action
-Automation advanced module wrap-up
-Up Next
-Start your security pathway
-Start your governance pathway
-Testing applications with GitHub Actions
-Bekah Whittle
-Bekah Whittle // Director, Field Services // GitHub
-Now that we’ve built a simple web application using GitHub Actions, we’ll move on to the next step of our CI/CD pipeline: testing. 
-
-We know that running tests manually can be a pain. With Actions, you can remove that pain through automation. You can enforce which tests run when, where, and in what circumstances via centralized workflows in Actions, rather than piecemeal scripts in disparate environments. In this guide, we’ll show you the basics of testing with Actions, and we’ll hear from Amplifon again on how they used a third-party action for testing and used self-hosted runners to deal with custom hardware requirements.
-
-In this guide, you will learn:
-
-How to test your code with GitHub Actions
-
-How GitHub Marketplace provides actions for a multitude of tests
-
-How to decide between GitHub-hosted and self-hosted runners
-
-Testing our build
-In the last guide, we created the build-test-deploy.yml workflow in the actions-learning-pathway repository and built our sample Next.js web application. Now, we want to test that build to make sure everything came out as planned. For this, we’ll run a simple unit test, but know that Actions can run nearly any type of test. For example, Amplifon uses an action from GitHub Marketplace to easily integrate with third-party testing software.
-
-GitHub Marketplace offers pre-built actions in various languages for every type of testing you could need. For example, we ensure code quality with the PMD action, which runs the PMD code quality analyzer on our Java, JavaScript, and Apex code. This standalone action handles all the necessary steps to run PMD on our GitHub repositories.
-
-Bernat Nosas Comerma
-Bernat Nosas Comerma // Lead of Global DevOps // Amplifon
-Let’s see where we left off.
-
-Open your copy of the actions-learning-pathway repository in your browser.
-
-Open the .github/workflows directory, and then open build-test-deploy.yml.
-
-Your workflow file should look like this to start:
-
-name: build-test-deploy
-on: push
-jobs: 
-  build:
-    runs-on: ubuntu-latest
-    steps: 
-      - name: checkout repo
-        uses: actions/checkout@v3
       - name: use node.js
         uses: actions/setup-node@v3
         with:
